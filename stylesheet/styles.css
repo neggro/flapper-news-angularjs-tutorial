@@ -1,0 +1,13 @@
+html,
+body {
+    min-width: 320px;
+}
+.glyphicon-thumbs-up {
+    cursor:pointer;
+}
+.posts {
+    margin-bottom: 25px;
+}
+.posts li {
+    margin-bottom: 5px;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flapper News</title>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet/styles.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+    <script src="javascript/app.js"></script>
+    <script src="javascript/controllers/main-controller.js"></script>
+    <script src="javascript/controllers/posts-controller.js"></script>
+    <script src="javascript/services/posts.js"></script>
+</head>
+<body ng-app="flapperNews">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <ui-view></ui-view>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

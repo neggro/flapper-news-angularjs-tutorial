@@ -1,0 +1,25 @@
+<div class="page-header">
+    <h1>Flapper News</h1>
+</div>
+
+<ul class="posts list-unstyled">
+    <li ng-repeat="post in posts | orderBy: '-upvotes'">
+        <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+        <a ng-show="post.link" href="{{post.link}}">{{post.title}}</a>
+        <span>
+            <a href="#/posts/{{$index}}">Comments</a>
+        </span>
+        <span ng-hide="post.link">{{post.title}}</span>
+        - upvotes: {{post.upvotes}}
+    </li>
+</ul>
+
+<form name="addPostForm" ng-submit="addPostForm.$valid && addPost()" novalidate>
+    <div class="form-group">
+        <input class="form-control" type="text" placeholder="Title" ng-model="title" required></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="text" placeholder="Link" ng-model="link"></input>
+    </div>
+    <button class="btn btn-primary" type="submit">Post</button>
+</form>
