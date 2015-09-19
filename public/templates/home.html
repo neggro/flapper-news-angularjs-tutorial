@@ -1,25 +1,24 @@
-<div class="page-header">
-    <h1>Flapper News</h1>
-</div>
+<blockquote ng-repeat="post in vm.posts | orderBy: '-upvotes'">
+    <p>
+        <span class="glyphicon glyphicon-thumbs-up" ng-click="vm.incrementUpvotes(post)"></span>
+        {{post.upvotes}} &nbsp;
+        <strong>
+            <a ng-show="post.link" href="{{post.link}}" target="_blank">{{post.title}}</a>
+            <span ng-hide="post.link">{{post.title}}</span>
+        </strong>
+        <footer>
+            <span ng-show="post.author">posted by <a>{{post.author}}</a></span> |
+            <a href="#/posts/{{post._id}}">Comments</a>
+        </footer>
+    </p>
+</blockquote>
 
-<ul class="posts list-unstyled">
-    <li ng-repeat="post in posts | orderBy: '-upvotes'">
-        <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
-        <a ng-show="post.link" href="{{post.link}}">{{post.title}}</a>
-        <span>
-            <a href="#/posts/{{$index}}">Comments</a>
-        </span>
-        <span ng-hide="post.link">{{post.title}}</span>
-        - upvotes: {{post.upvotes}}
-    </li>
-</ul>
-
-<form name="addPostForm" ng-submit="addPostForm.$valid && addPost()" novalidate>
+<form class="form-group" name="addPostForm" ng-submit="addPostForm.$valid && vm.addPost()" novalidate>
     <div class="form-group">
-        <input class="form-control" type="text" placeholder="Title" ng-model="title" required></input>
+        <input class="form-control" type="text" placeholder="Title" ng-model="vm.title" required>
     </div>
     <div class="form-group">
-        <input class="form-control" type="text" placeholder="Link" ng-model="link"></input>
+        <input class="form-control" type="text" placeholder="Link" ng-model="vm.link">
     </div>
-    <button class="btn btn-primary" type="submit">Post</button>
+    <button class="btn btn-primary" type="submit">Submit</button>
 </form>

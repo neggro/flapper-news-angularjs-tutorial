@@ -1,14 +1,16 @@
 (function () {
+    'use strict';
 
     angular
         .module('flapperNews', [
             'ui.router'
         ])
-        .config([
-            '$stateProvider',
-            '$urlRouterProvider',
-            stateURLConfig
-        ]);
+        .config(stateURLConfig);
+
+    stateURLConfig.$inject = [
+        '$stateProvider',
+        '$urlRouterProvider'
+    ];
 
     function stateURLConfig($stateProvider, $urlRouterProvider) {
 
@@ -16,15 +18,67 @@
             .state('home', {
                 url: '/',
                 templateUrl: '/templates/home.html',
-                controller: 'MainController'
+                controller: 'MainController',
+                controllerAs: 'vm',
+                onEnter: onAppEnterNoAuth
             })
             .state('posts', {
                 url: '/posts/{id}',
                 templateUrl: '/templates/posts.html',
-                controller: 'PostsController'
+                controller: 'PostsController',
+                controllerAs: 'vm',
+                resolve: {
+                    post: resolvePost
+                },
+                onEnter: onAppEnterNoAuth
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/templates/login.html',
+                controller: 'AuthController',
+                controllerAs: 'vm',
+                onEnter: onAppEnterAuth
+            })
+            .state('register', {
+                url: '/register',
+                templateUrl: '/templates/register.html',
+                controller: 'AuthController',
+                controllerAs: 'vm',
+                onEnter: onAppEnterAuth
             });
 
         $urlRouterProvider.otherwise('/');
+
+        resolvePost.$inject = [
+            '$stateParams',
+            'posts'
+        ];
+
+        function resolvePost($stateParams, posts) {
+            return posts.get($stateParams.id);
+        }
+
+        onAppEnterNoAuth.$inject = [
+            '$state',
+            'auth'
+        ];
+
+        function onAppEnterNoAuth($state, auth) {
+            if (!auth.isLoggedIn()) {
+                $state.go('login');
+            }
+        }
+
+        onAppEnterAuth.$inject = [
+            '$state',
+            'auth'
+        ];
+
+        function onAppEnterAuth($state, auth) {
+            if (auth.isLoggedIn()) {
+                $state.go('home');
+            }
+        }
     }
 
 })();

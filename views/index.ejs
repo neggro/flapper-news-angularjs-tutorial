@@ -4,27 +4,53 @@
     <meta charset="UTF-8">
     <title>Flapper News</title>
 
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+    <script src="javascripts/lib/angular.js"></script>
+    <script src="javascripts/lib/angular-ui-router.js"></script>
+
     <script src="javascripts/app.js"></script>
-    <script src="javascripts/controllers/main-controller.js"></script>
-    <script src="javascripts/controllers/posts-controller.js"></script>
-    <script src="javascripts/services/posts.js"></script>
+    <!-- controllers -->
+    <script src="javascripts/controllers/main.controller.js"></script>
+    <script src="javascripts/controllers/posts.controller.js"></script>
+    <script src="javascripts/controllers/auth.controller.js"></script>
+    <script src="javascripts/controllers/nav.controller.js"></script>
+    <!-- services -->
+    <script src="javascripts/services/posts.service.js"></script>
+    <script src="javascripts/services/comments.service.js"></script>
+    <script src="javascripts/services/auth.service.js"></script>
 </head>
 <body ng-app="flapperNews">
-
+    <nav class="navbar navbar-default" ng-controller="NavController as vm">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li ng-show="vm.isLoggedIn()">
+                        <a>Hello, {{vm.getUserName()}}</a>
+                    </li>
+                    <li ng-show="vm.isLoggedIn()">
+                        <a href="#" ng-click="vm.logOut()">Log Out</a>
+                    </li>
+                    <li ng-hide="vm.isLoggedIn()">
+                        <a href="/#/login">Log In</a>
+                    </li>
+                    <li ng-hide="vm.isLoggedIn()">
+                        <a href="/#/register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="page-header">
+                    <h1>Flapper News</h1>
+                </div>
                 <ui-view></ui-view>
-
             </div>
         </div>
     </div>
-
 </body>
 </html>
