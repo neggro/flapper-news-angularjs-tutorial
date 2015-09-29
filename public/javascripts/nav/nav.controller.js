@@ -9,7 +9,6 @@
         'auth'
     ];
 
-    /* @ngInject */
     function NavController(auth) {
 
         var vm = this;

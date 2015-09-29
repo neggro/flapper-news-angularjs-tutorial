@@ -6,11 +6,10 @@
         .controller('MainController', MainController);
 
     MainController.$inject = [
-        'posts'
+        'postsService'
     ];
 
-    /* @ngInject */
-    function MainController(posts) {
+    function MainController(postsService) {
 
         var vm = this;
         vm.posts = [];
@@ -20,7 +19,7 @@
         activate();
 
         function activate() {
-            posts
+            postsService
                 .getAll()
                 .then(function successCallback(serviceResponse) {
                     vm.posts = serviceResponse.data;
@@ -28,7 +27,7 @@
         }
 
         function addPost() {
-            posts
+            postsService
                 .create({
                     title: vm.title,
                     link: vm.link
@@ -41,7 +40,7 @@
         }
 
         function incrementUpvotes(post) {
-            posts
+            postsService
                 .upvote(post)
                 .then(function successCallback() {
                     post.upvotes++;

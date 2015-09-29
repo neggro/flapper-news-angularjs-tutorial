@@ -27,9 +27,6 @@
                 templateUrl: '/templates/posts.html',
                 controller: 'PostsController',
                 controllerAs: 'vm',
-                resolve: {
-                    post: resolvePost
-                },
                 onEnter: onAppEnterNoAuth
             })
             .state('login', {
@@ -48,15 +45,6 @@
             });
 
         $urlRouterProvider.otherwise('/');
-
-        resolvePost.$inject = [
-            '$stateParams',
-            'posts'
-        ];
-
-        function resolvePost($stateParams, posts) {
-            return posts.get($stateParams.id);
-        }
 
         onAppEnterNoAuth.$inject = [
             '$state',

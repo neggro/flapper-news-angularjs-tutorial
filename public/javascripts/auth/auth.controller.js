@@ -10,7 +10,6 @@
         'auth'
     ];
 
-    /* @ngInject */
     function AuthController($state, auth) {
 
         var vm = this;

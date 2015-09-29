@@ -12,14 +12,14 @@
 
     <script src="javascripts/app.js"></script>
     <!-- controllers -->
-    <script src="javascripts/controllers/main.controller.js"></script>
-    <script src="javascripts/controllers/posts.controller.js"></script>
-    <script src="javascripts/controllers/auth.controller.js"></script>
-    <script src="javascripts/controllers/nav.controller.js"></script>
+    <script src="javascripts/posts/posts.controller.js"></script>
+    <script src="javascripts/comments/comments.controller.js"></script>
+    <script src="javascripts/auth/auth.controller.js"></script>
+    <script src="javascripts/nav/nav.controller.js"></script>
     <!-- services -->
-    <script src="javascripts/services/posts.service.js"></script>
-    <script src="javascripts/services/comments.service.js"></script>
-    <script src="javascripts/services/auth.service.js"></script>
+    <script src="javascripts/posts/posts.service.js"></script>
+    <script src="javascripts/comments/comments.service.js"></script>
+    <script src="javascripts/auth/auth.service.js"></script>
 </head>
 <body ng-app="flapperNews">
     <nav class="navbar navbar-default" ng-controller="NavController as vm">
@@ -46,7 +46,9 @@
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
                 <div class="page-header">
-                    <h1>Flapper News</h1>
+                    <h1>
+                        <a href="/#/">Flapper News</a>
+                    </h1>
                 </div>
                 <ui-view></ui-view>
             </div>

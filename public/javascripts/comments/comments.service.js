@@ -3,7 +3,7 @@
 
     angular
         .module('flapperNews')
-        .factory('comments', commentsService);
+        .factory('commentsService', commentsService);
 
     commentsService.$inject = [
         '$http',

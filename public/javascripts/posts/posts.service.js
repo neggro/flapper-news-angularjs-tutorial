@@ -3,7 +3,7 @@
 
     angular
         .module('flapperNews')
-        .factory('posts', postsService);
+        .factory('postsService', postsService);
 
     postsService.$inject = [
         '$http',
