@@ -1,4 +1,4 @@
-# MEAN Stack Flapper News Tutorial from Thinkster.io
+# MEAN Stack: Flapper News Tutorial from Thinkster.io
 MEAN (MongoDB, Express.js, Angular.js, Node.js), you can find the original tutorial here: https://thinkster.io/mean-stack-tutorial/
 
 App structure updated to separate back end and front end code.
