@@ -17,10 +17,6 @@
         vm.isLoggedIn = auth.isLoggedIn;
         vm.getUserName = auth.getUserName;
         vm.logOut = auth.logOut;
-
-        // activate();
-
-        // function activate() {
-        // }
     }
+
 })();

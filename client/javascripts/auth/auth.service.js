@@ -11,7 +11,6 @@
         '$state'
     ];
 
-    /* @ngInject */
     function authService($http, $window, $state) {
 
         return {

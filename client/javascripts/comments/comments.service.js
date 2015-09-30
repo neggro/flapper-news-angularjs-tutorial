@@ -10,7 +10,6 @@
         'auth'
     ];
 
-    /* @ngInject */
     function commentsService($http, auth) {
 
         return {

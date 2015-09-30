@@ -1,21 +1,21 @@
-var express = require('express'),
-    path = require('path'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-    indexRoute,
-    postsRoute,
-    commentsRoute,
-    loginRoute,
-    registerRoute,
+var indexRoute;
+var postsRoute;
+var commentsRoute;
+var loginRoute;
+var registerRoute;
 
-    app = express(),
+var app = express();
 
-    mongoose = require('mongoose'),
+var mongoose = require('mongoose');
 
-    passport = require('passport');
+var passport = require('passport');
 
 // register mongoose models in the application
 require('./models/Comment');
@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 // init passport
 app.use(passport.initialize());

@@ -10,7 +10,6 @@
         'auth'
     ];
 
-    /* @ngInject */
     function postsService($http, auth) {
 
         var postsResponse = {
