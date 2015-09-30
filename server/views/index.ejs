@@ -9,6 +9,8 @@
 
     <script src="javascripts/lib/angular.js"></script>
     <script src="javascripts/lib/angular-ui-router.js"></script>
+    <script src="javascripts/lib/jquery.min.js"></script>
+    <script src="javascripts/lib/bootstrap.min.js"></script>
 
     <script src="javascripts/app.js"></script>
     <!-- controllers -->
@@ -22,36 +24,39 @@
     <script src="javascripts/auth/auth.service.js"></script>
 </head>
 <body ng-app="flapperNews">
-    <nav class="navbar navbar-default" ng-controller="NavController as vm">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <ul class="nav navbar-nav">
-                    <li ng-show="vm.isLoggedIn()">
-                        <a>Hello, {{vm.getUserName()}}</a>
-                    </li>
-                    <li ng-show="vm.isLoggedIn()">
-                        <a href="#" ng-click="vm.logOut()">Log Out</a>
-                    </li>
-                    <li ng-hide="vm.isLoggedIn()">
-                        <a href="/#/login">Log In</a>
-                    </li>
-                    <li ng-hide="vm.isLoggedIn()">
-                        <a href="/#/register">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3">
-                <div class="page-header">
-                    <h1>
-                        <a href="/#/">Flapper News</a>
-                    </h1>
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default" ng-controller="NavController as vm">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/#/">Flapper News</a>
                 </div>
-                <ui-view></ui-view>
-            </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-show="vm.isLoggedIn()">
+                            <a>Hello, {{vm.getUserName()}}</a>
+                        </li>
+                        <li ng-show="vm.isLoggedIn()">
+                            <a href="#" ng-click="vm.logOut()">Log Out</a>
+                        </li>
+                        <li ng-hide="vm.isLoggedIn()">
+                            <a href="/#/login">Log In</a>
+                        </li>
+                        <li ng-hide="vm.isLoggedIn()">
+                            <a href="/#/register">Register</a>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+        <div class="dynamic-content">
+            <ui-view></ui-view>
         </div>
     </div>
 </body>

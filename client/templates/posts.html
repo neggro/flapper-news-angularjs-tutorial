@@ -1,9 +1,9 @@
-<h2 class="posts">
+<h3 class="posts">
     <strong>
         <a ng-show="vm.post.link" href="{{vm.post.link}}">{{vm.post.title}}</a>
         <span ng-hide="vm.post.link">{{vm.post.title}}</span>
     </strong>
-</h2>
+</h3>
 
 <div class="posts">
     <blockquote ng-repeat="comment in vm.post.comments | orderBy:'-upvotes'">
