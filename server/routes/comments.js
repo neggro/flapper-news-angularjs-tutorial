@@ -1,16 +1,16 @@
-var express = require('express'),
-    router = express.Router(),
+var express = require('express');
+var router = express.Router();
 
-    mongoose = require('mongoose'),
-    PostModel = mongoose.model('Post'),
-    CommentModel = mongoose.model('Comment'),
+var mongoose = require('mongoose');
+var PostModel = mongoose.model('Post');
+var CommentModel = mongoose.model('Comment');
 
-    jwt = require('express-jwt'),
+var jwt = require('express-jwt');
 
-    auth = jwt({
-        secret: 'SECRET',
-        userProperty: 'payload'
-    });
+var auth = jwt({
+    secret: 'SECRET',
+    userProperty: 'payload'
+});
 
 // POST
 router.post('/posts/:post/comments', auth, commentCreate);

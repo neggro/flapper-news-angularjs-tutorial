@@ -1,8 +1,8 @@
-var express = require('express'),
-    router = express.Router(),
+var express = require('express');
+var router = express.Router();
 
-    mongoose = require('mongoose'),
-    UserModel = mongoose.model('User');
+var mongoose = require('mongoose');
+var UserModel = mongoose.model('User');
 
 router.post('/register', registerUser);
 

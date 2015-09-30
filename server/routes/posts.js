@@ -1,15 +1,15 @@
-var express = require('express'),
-    router = express.Router(),
+var express = require('express');
+var router = express.Router();
 
-    mongoose = require('mongoose'),
-    PostModel = mongoose.model('Post'),
+var mongoose = require('mongoose');
+var PostModel = mongoose.model('Post');
 
-    jwt = require('express-jwt'),
+var jwt = require('express-jwt');
 
-    auth = jwt({
-        secret: 'SECRET',
-        userProperty: 'payload'
-    });
+var auth = jwt({
+    secret: 'SECRET',
+    userProperty: 'payload'
+});
 
 // GET (all)
 router.get('/posts', getAllPosts);

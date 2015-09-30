@@ -1,6 +1,6 @@
-var mongoose = require('mongoose'),
+var mongoose = require('mongoose');
 
-PostSchema = new mongoose.Schema({
+var PostSchema = new mongoose.Schema({
     title: String,
     link: String,
     upvotes: {

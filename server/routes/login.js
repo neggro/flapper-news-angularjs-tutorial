@@ -1,7 +1,7 @@
-var express = require('express'),
-    router = express.Router(),
+var express = require('express');
+var router = express.Router();
 
-    passport = require('passport');
+var passport = require('passport');
 
 router.post('/login', loginUser);
 

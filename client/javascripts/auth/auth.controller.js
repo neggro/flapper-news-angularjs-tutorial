@@ -33,11 +33,6 @@
                 $state.go('home');
             });
         }
-
-        // activate();
-
-        // function activate() {
-        // }
     }
 
 })();

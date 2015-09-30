@@ -1,6 +1,6 @@
-var mongoose = require('mongoose'),
+var mongoose = require('mongoose');
 
-CommentSchema = new mongoose.Schema({
+var CommentSchema = new mongoose.Schema({
     body: String,
     author: String,
     upvotes: {

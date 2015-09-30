@@ -33,8 +33,8 @@
 
         function isLoggedIn() {
 
-            var token = getToken(),
-                payload;
+            var token = getToken();
+            var payload;
 
             if (token) {
 
@@ -48,9 +48,9 @@
 
         function getUserName() {
 
-            var token,
-                payload,
-                userName = '';
+            var token;
+            var payload;
+            var userName = '';
 
             if (isLoggedIn()) {
 
