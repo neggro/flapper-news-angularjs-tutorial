@@ -1,3 +1,13 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<%- include('head') -%>
+<body ng-app="flapperNews">
+    <div class="container">
+        <%- include('navbar') -%>
+        <div class="dynamic-content">
+            <h1><%= message %></h1>
+            <h2><%= error.status %></h2>
+            <pre><%= error.stack %></pre>
+        </div>
+    </div>
+    <%- include('footer') -%>
+</body>
+</html>

@@ -1,63 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Flapper News</title>
-
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="stylesheets/style.css" rel="stylesheet">
-
-    <script src="javascripts/lib/angular.js"></script>
-    <script src="javascripts/lib/angular-ui-router.js"></script>
-    <script src="javascripts/lib/jquery.min.js"></script>
-    <script src="javascripts/lib/bootstrap.min.js"></script>
-
-    <script src="javascripts/app.js"></script>
-    <!-- controllers -->
-    <script src="javascripts/posts/posts.controller.js"></script>
-    <script src="javascripts/comments/comments.controller.js"></script>
-    <script src="javascripts/auth/auth.controller.js"></script>
-    <script src="javascripts/nav/nav.controller.js"></script>
-    <!-- services -->
-    <script src="javascripts/posts/posts.service.js"></script>
-    <script src="javascripts/comments/comments.service.js"></script>
-    <script src="javascripts/auth/auth.service.js"></script>
-</head>
+<%- include('head') -%>
 <body ng-app="flapperNews">
+    <%- include('navbar') -%>
     <div class="container">
-        <!-- Static navbar -->
-        <nav class="navbar navbar-default" ng-controller="NavController as vm">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/#/">Flapper News</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li ng-show="vm.isLoggedIn()">
-                            <a>Hello, {{vm.getUserName()}}</a>
-                        </li>
-                        <li ng-show="vm.isLoggedIn()">
-                            <a href="#" ng-click="vm.logOut()">Log Out</a>
-                        </li>
-                        <li ng-hide="vm.isLoggedIn()">
-                            <a href="/#/login">Log In</a>
-                        </li>
-                        <li ng-hide="vm.isLoggedIn()">
-                            <a href="/#/register">Register</a>
-                        </li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div><!--/.container-fluid -->
-        </nav>
         <div class="dynamic-content">
             <ui-view></ui-view>
         </div>
     </div>
+    <%- include('footer') -%>
 </body>
 </html>

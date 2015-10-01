@@ -1,7 +1,7 @@
 <div ng-show="error" class="alert alert-danger row">
     <span>{{ error.message }}</span>
 </div>
-<form name="registerForm" ng-submit="registerForm.$valid && vm.register()" novalidate>
+<form name="registerForm" ng-submit="registerForm.$valid && vm.register()" class="form-group" novalidate>
     <h3>Register</h3>
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Username" ng-model="vm.user.username" required></input>
