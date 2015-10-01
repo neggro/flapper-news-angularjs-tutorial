@@ -1,5 +1,5 @@
-<div ng-show="error" class="alert alert-danger row">
-    <span>{{ error.message }}</span>
+<div ng-show="vm.error" class="alert alert-danger" role="alert">
+    <span>{{ vm.error.message }}</span>
 </div>
 <form name="registerForm" ng-submit="registerForm.$valid && vm.register()" class="form-group" novalidate>
     <h3>Register</h3>
