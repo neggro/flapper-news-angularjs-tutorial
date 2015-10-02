@@ -76,3 +76,6 @@ body {
     margin-right: auto;
     max-width: 480px;
 }
+.open-modal-wrapper {
+    margin-bottom: 15px;
+}

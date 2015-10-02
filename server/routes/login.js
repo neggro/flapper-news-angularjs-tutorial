@@ -23,9 +23,9 @@ function loginUser(req, res, next) {
             return res.json({
                 token: user.generateJWT()
             });
-        } else {
-            return res.status(401).json(info);
         }
+
+        return res.status(401).json(info);
 
     })(req, res, next);
 }

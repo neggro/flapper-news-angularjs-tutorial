@@ -7,8 +7,9 @@
             <span ng-hide="post.link">{{post.title}}</span>
         </strong>
         <footer>
-            <span ng-show="post.author">posted by <a>{{post.author}}</a></span> |
+            <span ng-show="post.author">posted by <strong>{{post.author}}</strong></span> |
             <a href="#/posts/{{post._id}}">Comments</a>
+            <span ng-click="vm.delete(post._id);">delete</span>
         </footer>
     </p>
 </blockquote>

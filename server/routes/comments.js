@@ -24,6 +24,9 @@ router.param('post', postMiddleware);
 // PUT
 router.put('/comments/:comment/upvote', auth, commentUpvote);
 
+// DELETE
+router.delete('/comments/:comment', auth, deleteComment);
+
 function commentCreate(req, res, next) {
 
     var comment = new CommentModel(req.body);
@@ -95,6 +98,21 @@ function commentUpvote(req, res, next) {
         }
 
         res.json(comment);
+    });
+}
+
+function deleteComment(req, res, next) {
+
+    CommentModel.remove({
+        _id: req.comment._id
+    }, function removeCallback(err) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json({
+            success: true
+        });
     });
 }
 

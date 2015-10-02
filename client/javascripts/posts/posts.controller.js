@@ -15,6 +15,7 @@
         vm.posts = [];
         vm.addPost = addPost;
         vm.incrementUpvotes = incrementUpvotes;
+        vm.delete = deletePost;
 
         activate();
 
@@ -45,6 +46,16 @@
                 .then(function successCallback() {
                     post.upvotes++;
                 }, processError);
+        }
+
+        function deletePost(id) {
+            postsService.delete(id).then(function successCallback(responseData) {
+                if (responseData.data.success) {
+                    activate();
+                } else {
+                    processError;
+                }
+            }, processError);
         }
 
         function processError() {

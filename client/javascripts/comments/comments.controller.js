@@ -17,6 +17,7 @@
         vm.post = {};
         vm.addComment = addComment;
         vm.upvote = upvote;
+        vm.delete = deleteComment;
 
         activate();
 
@@ -42,6 +43,7 @@
                 .then(function successCallback(comment) {
                     vm.post.comments.push(comment.data);
                     vm.body = '';
+                    vm.hideModal();
                 }, processError);
         }
 
@@ -53,9 +55,38 @@
                 }, processError);
         }
 
+        function deleteComment(id) {
+            commentsService.delete(id).then(function successCallback(responsData) {
+                if (responsData.data.success) {
+                    activate();
+                } else {
+                    processError();
+                }
+            }, processError);
+        }
+
         function processError() {
             alert('Shit happens, please try again.');
         }
+    }
+
+})();
+
+(function () {
+    'use strict';
+
+    angular
+        .module('flapperNews')
+        .directive('modalElement', modalElement);
+
+    function modalElement() {
+        return function linkFn(scope, element, attrs) {
+            scope.vm.hideModal = hideModal;
+
+            function hideModal() {
+                element.modal('hide');
+            }
+        };
     }
 
 })();

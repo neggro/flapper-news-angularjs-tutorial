@@ -14,7 +14,8 @@
 
         return {
             add: add,
-            upvote: upvote
+            upvote: upvote,
+            delete: deleteComment
         };
 
         function add(id, comment) {
@@ -27,6 +28,14 @@
 
         function upvote(comment) {
             return $http.put('/comments/' + comment._id + '/upvote', null, {
+                headers: {
+                    Authorization: 'Bearer ' + auth.getToken()
+                }
+            });
+        }
+
+        function deleteComment(id) {
+            return $http.delete('/comments/' + id, {
                 headers: {
                     Authorization: 'Bearer ' + auth.getToken()
                 }

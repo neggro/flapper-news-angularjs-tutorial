@@ -4,21 +4,41 @@
         <span ng-hide="vm.post.link">{{vm.post.title}}</span>
     </strong>
 </h3>
-
+<!-- Button trigger modal -->
+<div class="open-modal-wrapper">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addCommentModal" ng-click="vm.addCommentForm.$setUntouched();">Add Comment</button>
+</div>
+<!-- Posts list -->
 <div class="posts">
     <blockquote ng-repeat="comment in vm.post.comments | orderBy:'-upvotes'">
         <p>
-            <span class="glyphicon glyphicon-thumbs-up" ng-click="vm.upvote(comment)"></span>
-            {{comment.upvotes}} &nbsp; {{comment.body}}
+            <span class="glyphicon glyphicon-thumbs-up" ng-click="vm.upvote(comment)"></span> {{comment.upvotes}} &nbsp; {{comment.body}}
+            <span ng-click="vm.delete(comment._id);">delete</span>
         </p>
         <footer>by {{comment.author}}</footer>
     </blockquote>
 </div>
-
-<form class="form-group" name="addCommentForm" ng-submit="addCommentForm.$valid && vm.addComment()" novalidate>
-    <h4>Add a new comment</h4>
-    <div class="form-group">
-        <textarea type="text" class="form-control" placeholder="Comment" ng-model="vm.body" required></textarea>
+<!-- Add comment modal -->
+<div class="modal fade" id="addCommentModal" modal-element tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Add New Comment</h4>
+            </div>
+            <form name="vm.addCommentForm" ng-submit="vm.addCommentForm.$valid && vm.addComment()" novalidate>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" placeholder="Comment" ng-model="vm.body" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.addCommentForm.$setUntouched();">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

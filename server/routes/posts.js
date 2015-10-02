@@ -3,6 +3,7 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var PostModel = mongoose.model('Post');
+var CommentModel = mongoose.model('Comment');
 
 var jwt = require('express-jwt');
 
@@ -25,6 +26,9 @@ router.get('/posts/:post', getById);
 
 // PUT
 router.put('/posts/:post/upvote', auth, postUpvote);
+
+// DELETE
+router.delete('/posts/:post', auth, deletePost);
 
 function getAllPosts(req, res, next) {
 
@@ -92,6 +96,32 @@ function postUpvote(req, res, next) {
         }
 
         res.json(post);
+    });
+}
+
+function deletePost(req, res, next) {
+
+    // first remove the comments of this post
+    CommentModel.remove({
+        post: req.post._id
+    }, function removeCommentsCallback(err) {
+
+        if (err) {
+            return next(err);
+        }
+
+        // then remove the post
+        PostModel.remove({
+            _id: req.post._id
+        }, function removeCallback(err) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json({
+                success: true
+            });
+        });
     });
 }
 
